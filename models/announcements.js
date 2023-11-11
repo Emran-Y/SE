@@ -33,7 +33,7 @@ const announcementSchema = new mongoose.Schema({
   },
   announcementPicture: {
     type: Buffer,
-    default: Buffer.from('base64-encoded-image-string', 'base64'),
+    default: null,
     required: false
   }
 });
@@ -46,7 +46,7 @@ const annoucementValidater =  annoucement => {
         title: Joi.string().required().min(5),
         content: Joi.string().required().min(10),
       });
-    return Joi.validate(annoucement,schema)
+    return Joi.validate(annoucement,announcementValidationSchema)
 }
 
 

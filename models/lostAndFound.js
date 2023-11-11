@@ -10,6 +10,11 @@ const lostFoundSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  profilePicture: {
+    type: Buffer,
+    required: false,
+    default:null,
+  },
 //   admin: {
 //     type: mongoose.Schema.Types.ObjectId,
 //     ref: 'User',

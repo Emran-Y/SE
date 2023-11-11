@@ -1,5 +1,6 @@
 const exp = require('constants');
 const mongoose = require('mongoose')
+const Joi = require('joi')
 
 const jobAndInternshipsSchema = new mongoose. Schema({
  
@@ -10,6 +11,11 @@ const jobAndInternshipsSchema = new mongoose. Schema({
   description: {
     type: String,
     required: true
+  },
+  profilePicture: {
+    type: Buffer,
+    required: false,
+    default:null,
   },
 //   admin: {
 //     type: mongoose.Schema.Types.ObjectId,
@@ -26,13 +32,12 @@ const jobAndInternshipsSchema = new mongoose. Schema({
   }
 });
 
-const JobAndInternship = mongoose.model('JobAndInternship', jobSchema)
+const JobAndInternship = mongoose.model('JobAndInternship', jobAndInternshipsSchema)
 
 const JobAndInternshipsValidater = jobAndInternship => {
     const jobAndInternshipsValidationSchema = Joi.object({
         title: Joi.string().required().min(5),
         description: Joi.string().required().min(10),
-        createdAt: Joi.date().iso().required(),
         applicationLink: Joi.string().uri().required()
       })
 

@@ -58,6 +58,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Club'
   }],
+  chats: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Message'
+  }],
   pendingClubRequests: [{
     clubId: {
       type: mongoose.Schema.Types.ObjectId,
